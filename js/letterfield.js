@@ -1,5 +1,5 @@
 function setup(){
-  var theCanvas = createCanvas(window.innerWidth*0.8,window.innerHeight*0.8);
+  var theCanvas = createCanvas(window.innerHeight*0.8,window.innerHeight*0.8);
   theCanvas.parent("hook");
   lastlastPointx = width / 2;
   lastlastPointy = height / 2;
@@ -7,6 +7,8 @@ function setup(){
   lastPointy = height / 2;
   fieldSizex = width / 6;
   fieldSizey = height / 6;
+  toggle = true;
+  fill(0,0,0,100);
 }
 
 function draw(){
@@ -16,7 +18,6 @@ function letter(fieldy, fieldx) {
   var pointx = random((fieldSizex*fieldx - fieldSizex), (fieldSizex*fieldx));
   var pointy = random((fieldSizey*fieldy - fieldSizey), (fieldSizey*fieldy));
   noStroke();
-  fill(0,0,0,50);
   beginShape();
   vertex(pointx, pointy);
   vertex(lastPointx, lastPointy);
@@ -29,7 +30,15 @@ function letter(fieldy, fieldx) {
 }
 
 function keyTyped() {
-  if (key === 'a') {
+  if (key === ' ') {
+    if (toggle === true) {
+      fill(255,255,255,50);
+      toggle = false;
+    } else {
+      fill(0,0,0,100);
+      toggle = true;
+    }
+  } else if (key === 'a') {
     letter(1,1);
   } else if (key === 'b') {
     letter(1,2);
@@ -91,8 +100,7 @@ function keyTyped() {
     letter(6,4);
   } else if (key === '!') {
     letter(6,5);
-  } else if (key === 'ß') {
+  } else if (key === '?') {
     letter(6,6);
   }
-  return false;
 }
