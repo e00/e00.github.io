@@ -16,7 +16,7 @@ function letter(fieldy, fieldx) {
   var pointx = random((fieldSizex*fieldx - fieldSizex), (fieldSizex*fieldx));
   var pointy = random((fieldSizey*fieldy - fieldSizey), (fieldSizey*fieldy));
   noStroke();
-  fill(255,255,255,50);
+  fill(0,0,0,50);
   beginShape();
   vertex(pointx, pointy);
   vertex(lastPointx, lastPointy);
