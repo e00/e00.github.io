@@ -1,5 +1,5 @@
 function setup(){
-  var theCanvas = createCanvas(window.innerWidth*0.8,window.innerHeight*0.8);
+  var theCanvas = createCanvas(window.innerHeight*0.8,window.innerHeight*0.8);
   theCanvas.parent("hook");
   lastlastPointx = width / 2;
   lastlastPointy = height / 2;
