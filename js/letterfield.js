@@ -11,9 +11,6 @@ function setup(){
   fill(0,0,0,100);
 }
 
-function draw(){
-}
-
 function letter(fieldy, fieldx) {
   var pointx = random((fieldSizex*fieldx - fieldSizex), (fieldSizex*fieldx));
   var pointy = random((fieldSizey*fieldy - fieldSizey), (fieldSizey*fieldy));
@@ -38,69 +35,69 @@ function keyTyped() {
       fill(0,0,0,100);
       toggle = true;
     }
-  } else if (key === 'a') {
+  } else if (key === 'a' || key === 'A') {
     letter(1,1);
-  } else if (key === 'b') {
+  } else if (key === 'b' || key === 'B') {
     letter(1,2);
-  } else if (key === 'c') {
+  } else if (key === 'c' || key === 'C') {
     letter(1,3);
-  } else if (key === 'd') {
+  } else if (key === 'd' || key === 'D') {
     letter(1,4);
-  } else if (key === 'e') {
+  } else if (key === 'e' || key === 'E') {
     letter(1,5);
-  } else if (key === 'f') {
+  } else if (key === 'f' || key === 'F') {
     letter(1,6);
-  } else if (key === 'g') {
+  } else if (key === 'g' || key === 'G') {
     letter(2,1);
-  } else if (key === 'h') {
+  } else if (key === 'h' || key === 'H') {
     letter(2,2);
-  } else if (key === 'i') {
+  } else if (key === 'i' || key === 'I') {
     letter(2,3);
-  } else if (key === 'j') {
+  } else if (key === 'j' || key === 'J') {
     letter(2,4);
-  } else if (key === 'k') {
+  } else if (key === 'k' || key === 'K') {
     letter(2,5);
-  } else if (key === 'l') {
+  } else if (key === 'l' || key === 'L') {
     letter(2,6);
-  } else if (key === 'm') {
+  } else if (key === 'm' || key === 'M') {
     letter(3,1);
-  } else if (key === 'n') {
+  } else if (key === 'n' || key === 'N') {
     letter(3,2);
-  } else if (key === 'o') {
+  } else if (key === 'o' || key === 'O') {
     letter(3,5);
-  } else if (key === 'p') {
+  } else if (key === 'p' || key === 'P') {
     letter(3,6);
-  } else if (key === 'q') {
+  } else if (key === 'q' || key === 'Q') {
     letter(4,1);
-  } else if (key === 'r') {
+  } else if (key === 'r' || key === 'R') {
     letter(4,2);
-  } else if (key === 's') {
+  } else if (key === 's' || key === 'S') {
     letter(4,5);
-  } else if (key === 't') {
+  } else if (key === 't' || key === 'T') {
     letter(4,6);
-  } else if (key === 'u') {
+  } else if (key === 'u' || key === 'U') {
     letter(5,1);
-  } else if (key === 'v') {
+  } else if (key === 'v' || key === 'V') {
     letter(5,2);
-  } else if (key === 'w') {
+  } else if (key === 'w' || key === 'W') {
     letter(5,3);
-  } else if (key === 'x') {
+  } else if (key === 'x' || key === 'X') {
     letter(5,4);
-  } else if (key === 'y') {
+  } else if (key === 'y' || key === 'Y') {
     letter(5,5);
-  } else if (key === 'z') {
+  } else if (key === 'z' || key === 'Z') {
     letter(5,6);
-  } else if (key === 'ä') {
+  } else if (key === 'ä' || key === 'Ä') {
     letter(6,1);
-  } else if (key === 'ö') {
+  } else if (key === 'ö' || key === 'Ö') {
     letter(6,2);
-  } else if (key === 'ü') {
+  } else if (key === 'ü' || key === 'Ü') {
     letter(6,3);
-  } else if (key === '.') {
+  } else if (key === '.' || key === ':') {
     letter(6,4);
-  } else if (key === '!') {
+  } else if (key === '!' || key === '-') {
     letter(6,5);
-  } else if (key === '?') {
+  } else if (key === '?' || key === 'ß') {
     letter(6,6);
   }
 }
