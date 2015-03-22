@@ -1,0 +1,79 @@
+html {
+	padding: 0px;
+	margin: 0px;
+	font-family: 'Roboto',sans-serif;
+	font-size: 11px;
+}
+body {
+	background: rgb(188,206,219);
+	background: -moz-linear-gradient(top, rgb(188,206,219) 0%, rgb(227,242,253) 300px);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgb(188,206,219)), color-stop(300px, rgb(227,242,253)));
+	background: -webkit-linear-gradient(top, rgb(188,206,219) 0%, rgb(227,242,253) 300px);
+	background: -o-linear-gradient(top, rgb(188,206,219) 0%, rgb(227,242,253) 300px);
+	background: -ms-linear-gradient(top, rgb(188,206,219) 0%, rgb(227,242,253) 300px);
+	background: linear-gradient(to bottom, rgb(188,206,219) 0%, rgb(227,242,253) 300px);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bccedb', endColorstr='#e3f2fd', GradientType=0 );
+	background-repeat: no-repeat;
+	background-color: #e3f2fd;
+	color: #999999;
+}
+.bar rect {fill: #bbdefb;}
+.x.axis line {visibility: hidden;}
+.x.axis path {visibility: hidden;}
+.x.axis text {visibility: hidden;}
+.row .col {padding: 0px 0px !IMPORTANT;}
+.row {margin-bottom: 0px !IMPORTANT;}
+.tabs li.tab a {color: #42a5f5;}
+.tabs li.tab a:hover {color: #bbbbbb;}
+.tabs .indicator {background-color: #90caf9;}
+#box {
+	margin: 25 auto 25;
+	width: 500px;
+	background-color: #ededed;
+	border-radius: 5px;
+	border-width: 1px 1px 3px 1px;
+	border-style: solid;
+	border-color: #cccccc;
+	position: relative;
+	overflow: hidden;
+	box-shadow: rgba(0,0,0,0.05) 0px 0px 40px 0px;
+}
+#headline {
+	width: 100%;
+	background-image: url("../img/bg.png");
+	background-repeat: no-repeat;
+	background-color: #ffffff;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	font-size: 30px;
+	color: #888888;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	text-align: right;
+	padding: 40px 40px 40px 40px;
+}
+#explain {
+	width: 100%;
+	background-color: #ffffff;
+	font-size: 12px;
+	color: #888888;
+	letter-spacing: 0.8px;
+	line-height: 25px;
+	padding: 0px 40px 40px 40px;
+}
+#intro {
+	background-color: #ffffff;
+	font-size: 14px;
+	color: #999999;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: center;
+}
+#footer {
+	font-size: 8px;
+	color: #cccccc;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 10px 0px 0px 0px;
+}

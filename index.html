@@ -1,33 +1,135 @@
 <html>
-<head>
-<style>
-@font-face {
-  font-family: 'Quicksand';
-  src: url('fonts/Quicksand-Regular.otf');
-}
-body {
-    background-color: #aaaaaa;
-}
-#hook {
-    text-align: center;
-}
-#doit {
-    position: fixed;
-    bottom: 15%;
-    width: 100%;
-    margin: 10px auto 10px auto;
-    color: #777777;
-    text-align: center;
-    text-shadow: 0px 0px 20px #ffffff;
-    font-family: 'Quicksand', sans-serif;
-    font-size: 40px;
-}
-</style>
-</head>
-<body>
-<div id="doit">Type a thought and see it take shape.</div>
-<div id="hook"></div>
-<script type="text/javascript" src="js/p5.min.js"></script>
-<script type="text/javascript" src="js/letterfield.js"></script>
-</body>
+	<head>
+	    <meta charset="utf-8">
+	    <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+	    <script type="text/javascript" src="js/tabletop.js"></script>
+	    <script type="text/javascript" src='js/sheetsee.js'></script>
+	    <script src='https://cdn.rawgit.com/Dogfalo/materialize/master/dist/js/materialize.min.js'></script>
+	    <link rel='stylesheet prefetch' href='https://cdn.rawgit.com/Dogfalo/materialize/master/dist/css/materialize.min.css'>
+	    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto">
+	</head>
+	<body>
+		<div id="box">
+			<div class="row">
+		  		<div class="col s12">
+				    <div id="headline">TRANSIT</div>
+				    <div id="explain">The graphs below visualize the data obtained through <a href="http://goo.gl/forms/tDI4RXFyIT">this google forms survey</a>. The data points are pulled directly from the result sheet, thus update with every new entry to the survey.</div>
+		  		</div>
+		  	</div>
+			<div class="row">
+			    <div class="col s12">
+				    <div id="intro">Average travel distance to work sorted by</div>
+					<ul class="tabs">
+						<li class="tab col s4"><a href="#test1">home city</a></li>
+						<li class="tab col s4"><a class="active" href="#test2">mode of transportation</a></li>
+						<li class="tab col s4"><a href="#test3">age</a></li>
+					</ul>
+		    	</div>
+		    	<div id="test1" class="col s12"><div id="TravelByCity"></div></div>
+		    	<div id="test2" class="col s12"><div id="TravelByMode"></div></div>
+		    	<div id="test3" class="col s12"><div id="TravelByAge"></div></div>
+		  	</div>
+			<div class="row">
+		  		<div class="col s12">
+		  			<div id="footer">Emil Woop - Input / Output - 2014/15 University of Applied Sciences Potsdam</div>
+		  		</div>
+		  	</div>
+		</div>
+
+		<script type="text/javascript">
+			Object.size = function(obj) {
+			    var size = 0, key;
+			    for (key in obj) {
+			        if (obj.hasOwnProperty(key)) size++;
+			    }
+			    return size;
+			};
+
+			document.addEventListener('DOMContentLoaded', function() {
+	   			var URL = "1OPrbGMRBIWU88dPVyN-6wqTkqG_QA-nj0jpT4sOGBKM"
+	  				Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } )
+	  			})
+
+		    function showInfo(data) {
+		    	var cities = $.map(Sheetsee.getOccurance(data, "wheredoyoucurrentlylive"), function(value, index) {return [index]});
+				var averageTravelByCity = []
+		    	for (i = 0; i < cities.length; i++) {
+		    		var homeCityData = Sheetsee.getMatches(data, cities[i], "wheredoyoucurrentlylive")
+		    		var averageTravel = {city : cities[i], travelTime : Sheetsee.getColumnAverage(homeCityData, "whatisthetraveldistancebetweenyourhomeandyourplaceofworkstudytraining")}
+					averageTravelByCity.push(averageTravel)
+		    	}
+		    	averageTravelByCity.sort(function (a, b) {
+		  			if (a.travelTime < b.travelTime) {
+						return 1;
+					}
+					if (a.travelTime > b.travelTime) {
+						return -1;
+					}
+						return 0;
+				})
+				var barOptions = { units: "travelTime",
+		                          labels: "city",
+		                          m: [23, 0, 0, 0],
+		                          w: 499, h: cities.length*28+23,
+		                          div: "#TravelByCity",
+		                          yaxis: " km",
+		                          hiColor: "#90caf9"
+		                        }
+				Sheetsee.d3BarChart(averageTravelByCity, barOptions)
+
+		    	var modes = $.map(Sheetsee.getOccurance(data, "whatisyourprimarymodeoftransportationtoyourplaceofworkstudytraining"), function(value, index) {return [index]});
+				var averageTravelByMode = []
+		    	for (i = 0; i < modes.length; i++) {
+		    		var modeData = Sheetsee.getMatches(data, modes[i], "whatisyourprimarymodeoftransportationtoyourplaceofworkstudytraining")
+		    		var averageTravel = {mode : modes[i], travelTime : Sheetsee.getColumnAverage(modeData, "whatisthetraveldistancebetweenyourhomeandyourplaceofworkstudytraining")}
+					averageTravelByMode.push(averageTravel)
+		    	}
+		    	averageTravelByMode.sort(function (a, b) {
+		  			if (a.travelTime < b.travelTime) {
+						return 1;
+					}
+					if (a.travelTime > b.travelTime) {
+						return -1;
+					}
+						return 0;
+				})
+				var barOptions = { units: "travelTime",
+		                          labels: "mode",
+		                          m: [24, 0, 0, 0],
+		                          w: 499, h: modes.length*28+24,
+		                          div: "#TravelByMode",
+		                          yaxis: " km",
+		                          hiColor: "#90caf9"
+		                        }
+				Sheetsee.d3BarChart(averageTravelByMode, barOptions)
+
+		    	var ages = $.map(Sheetsee.getOccurance(data, "howoldareyou"), function(value, index) {return [index]});
+				var averageTravelByAge = []
+		    	for (i = 0; i < ages.length; i++) {
+		    		var modeData = Sheetsee.getMatches(data, ages[i], "howoldareyou")
+		    		var averageTravel = {age : ages[i], travelTime : Sheetsee.getColumnAverage(modeData, "whatisthetraveldistancebetweenyourhomeandyourplaceofworkstudytraining")}
+					averageTravelByAge.push(averageTravel)
+		    	}
+		    	averageTravelByAge.sort(function (a, b) {
+		  			if (a.age > b.age) {
+						return 1;
+					}
+					if (a.age < b.age) {
+						return -1;
+					}
+						return 0;
+				})
+				var barOptions = { units: "travelTime",
+		                          labels: "age",
+		                          m: [18, 0, 0, 0],
+		                          w: 499, h: ages.length*28+18,
+		                          div: "#TravelByAge",
+		                          yaxis: " km",
+		                          hiColor: "#90caf9"
+		                        }
+				Sheetsee.d3BarChart(averageTravelByAge, barOptions)
+		    }
+	  	</script>
+	</body>
 </html>
