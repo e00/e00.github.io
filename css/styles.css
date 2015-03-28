@@ -17,6 +17,7 @@ body {
 	background-color: #e3f2fd;
 	color: #999999;
 }
+a:hover {color: #bbbbbb;}
 .bar rect {fill: #bbdefb;}
 .x.axis line {visibility: hidden;}
 .x.axis path {visibility: hidden;}
